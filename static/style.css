@@ -1,63 +1,74 @@
-/* Import Google Font */
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
-
-body {
-    font-family: 'Open Sans', sans-serif;
-    background-color: #FAFAFA;
+/* General Container for Spacing */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
     padding: 20px;
-    color: #2C3E50;
-    line-height: 1.6;
-    letter-spacing: 0.5px;
-}
-
-h1 {
-    text-align: center;
-    color: #34495E;
-    font-size: 32px;
-}
-
-.post {
     background-color: #FFFFFF;
-    border: 1px solid #E0E0E0;
-    padding: 20px;
-    margin-bottom: 20px;
     border-radius: 8px;
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
 }
 
-/* Hover effect for posts */
-.post:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transform: translateY(-3px);
+/* Form Styling */
+.form {
+    display: flex;
+    flex-direction: column;
 }
 
-.post h2 {
-    margin-top: 0;
-    color: #2980B9;
-    font-weight: 600;
+.input-text, .textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #DDD;
+    border-radius: 5px;
+    font-size: 16px;
 }
 
-.post p {
-    margin: 10px 0;
-    color: #7F8C8D;
+.textarea {
+    height: 150px;
 }
 
-/* Responsive design for mobile devices */
+/* Button Styles */
+.btn {
+    background-color: #3498DB;
+    color: #FFF;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #2980B9;
+}
+
+.btn-delete {
+    background-color: #E74C3C;
+    color: #FFF;
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.btn-delete:hover {
+    background-color: #C0392B;
+}
+
+/* Post Section */
+.posts {
+    margin-top: 30px;
+}
+
+.post-actions {
+    margin-top: 10px;
+}
+
+/* Mobile Responsive Design */
 @media (max-width: 600px) {
-    body {
-        padding: 10px;
-    }
-
-    h1 {
-        font-size: 24px;
-    }
-
-    .post {
+    .container {
         padding: 15px;
-    }
-
-    .post h2 {
-        font-size: 18px;
     }
 }
