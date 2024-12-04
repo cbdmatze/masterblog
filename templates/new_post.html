@@ -9,6 +9,18 @@
 <body>
     <div class="container">
         <h1>Create a New Post</h1>
+
+        <!-- Display flash messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul>
+                    {% for category, message in messages %}
+                        <li class="{{ category }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
         <form action="{{ url_for('new_post') }}" method="POST" class="form">
             <label for="author">Author:</label>
             <input type="text" id="author" name="author" required class="input-text">

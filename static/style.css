@@ -108,6 +108,31 @@ h1 {
     background-color: #27ae60;
 }
 
+/* Flash Messages */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+li.success {
+    color: green;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+}
+
+li.error {
+    color: red;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+}
+
 /* Mobile Responsive Design */
 @media (max-width: 600px) {
     .container {

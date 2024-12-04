@@ -9,6 +9,18 @@
 <body>
     <div class="container">
         <h1>REDUNDANT INFOS OF PARAMOUNT IMPORTANCE</h1>
+
+        <!-- Display flash messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul>
+                    {% for category, message in messages %}
+                        <li class="{{ category }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
         <a href="{{ url_for('add') }}" class="btn">Create New Post</a>
         <ul class="posts">
             {% for post in posts %}
