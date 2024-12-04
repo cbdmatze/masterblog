@@ -7,18 +7,24 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>    REDUNDANT INFOS OF PARAMOUNT IMPORTANCE     </h1>
-    <a href="{{ url_for('add') }}">Create New Post</a>
-    <ul>
-        {% for post in posts %}
-        <li>
-            <h2>{{ post.title }}</h2>
-            <p>By: {{ post.author }}</p>
-            <p>{{ post.content }}</p>
-            <a href="{{ url_for('update_post', id=post.id) }}">Update</a> | 
-            <a href="{{ url_for('delete_post', id=post.id) }}">Delete</a>
-        </li>
-        {% endfor %}
-    </ul>
+    <div class="container">
+        <h1>REDUNDANT INFOS OF PARAMOUNT IMPORTANCE</h1>
+        <a href="{{ url_for('add') }}" class="btn">Create New Post</a>
+        <ul class="posts">
+            {% for post in posts %}
+            <li class="post">
+                <h2>{{ post.title }}</h2>
+                <p>By: {{ post.author }}</p>
+                <p>{{ post.content }}</p>
+                <p>Likes: {{ post.likes }}</p>
+                <div class="post-actions">
+                    <a href="{{ url_for('like_post', id=post.id) }}" class="btn-like">Like</a>
+                    <a href="{{ url_for('update_post', id=post.id) }}" class="btn">Update</a>
+                    <a href="{{ url_for('delete_post', id=post.id) }}" class="btn-delete">Delete</a>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
 </body>
 </html>

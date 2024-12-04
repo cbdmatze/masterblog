@@ -17,13 +17,14 @@ class BlogPost(db.Model):
     author = db.Column(db.String(100), nullable=False)
     title = db.Column(db.String(200), nullable=False)
     content = db.Column(db.Text, nullable=False)
+    likes = db.Column(db.Integer, default=0)  # Add 'likes' column
 
     def __repr__(self):
         return f"Post({self.title}, {self.author})"
-    
+
 
 # Create the database and tables (run only once initially)
-@app.before_request
+@app.before_first_request
 def create_tables():
     db.create_all()
 
@@ -72,6 +73,14 @@ def update_post(id):
         return redirect(url_for('index'))  # Redirect to the homepage
     return render_template('update.html', post=post)
 
+
+# Route to like a post
+@app.route('/like/<int:id>')
+def like_post(id):
+    post = BlogPost.query.get_or_404(id)  # Fetch the blog post by ID
+    post.likes += 1  # Increment the like count
+    db.session.commit()  # Save the change to the database
+    return redirect(url_for('index'))  # Redirect to the homepage
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5003, debug=True)

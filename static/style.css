@@ -22,6 +22,23 @@ h1 {
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
 }
 
+/* Post Section */
+.posts {
+    margin-top: 30px;
+}
+
+.post {
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #FFF;
+    border-radius: 5px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.post-actions {
+    margin-top: 10px;
+}
+
 /* Form Styling */
 .form {
     display: flex;
@@ -73,13 +90,22 @@ h1 {
     background-color: #C0392B;
 }
 
-/* Post Section */
-.posts {
-    margin-top: 30px;
+/* Like Button Styling */
+.btn-like {
+    background-color: #2ecc71;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    margin-right: 10px;
 }
 
-.post-actions {
-    margin-top: 10px;
+.btn-like:hover {
+    background-color: #27ae60;
 }
 
 /* Mobile Responsive Design */
