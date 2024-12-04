@@ -1,3 +1,17 @@
+/* General Page Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0; /* light grey background */
+    color: #333;
+}
+
+/* Header Styling */
+h1 {
+    text-align: center;
+    font-size: 36px; /* Adjust the size of the header */
+    margin-bottom: 20px; /* Space below the header */
+}
+
 /* General Container for Spacing */
 .container {
     max-width: 800px;
@@ -37,6 +51,7 @@
     text-align: center;
     display: inline-block;
     transition: background-color 0.3s ease;
+    cursor: pointer;
 }
 
 .btn:hover {
@@ -51,6 +66,7 @@
     border-radius: 5px;
     text-align: center;
     transition: background-color 0.3s ease;
+    cursor: pointer;
 }
 
 .btn-delete:hover {
