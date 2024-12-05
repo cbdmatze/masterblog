@@ -50,3 +50,111 @@ def create_tables():
     db.create_all()
 
 
+
+app.route('/')
+def index():
+    """
+    Displays all the blog posts from the database.
+    
+    Returns:
+        Rendered HTML template with a list of all posts.
+    """
+    posts = BlogPost.querry.all() # Fetch all posts from the database
+    return render_template('index.html', posts=posts)
+
+
+@app.route('/add', methods=['GET', 'POST'])
+def add():
+    """
+    Displays a form to add a new blog post or adds the new post to the database if the form is submitted.
+    
+    Returns:
+        Rendered HTML template for adding a post, or redirects to the homepage after adding a post.
+    """
+    if request.method == 'POST':
+        new_post = BlogPost (
+            author = request.form['authot'], 
+            title = request.form['title'],
+            content = request.form['content']
+        )
+        db.session.add(new_post)
+        db.session.commit() # Save to database
+
+        # Flash success message and redirect
+        flash('Post created successfully!', 'success')
+        return redirect(url_for('index')) # Redirect to the homepage
+    
+    return render_template('add.html')
+
+
+@app.route('/delete/<int:id>')
+def delete_post(id):
+    """
+    Delete a blog post by its ID and removes it from the database.
+    
+    Args:
+        id (int): The ID of the blog post to delete.
+    
+    Returns:
+        Redirects to the homepage after deleting the post.
+    """
+    post = BlogPost.querry.get_or_404(id) # Get the post ID or return 404
+    db.session.delete(post)
+    db.session.commit() # Delete from the database
+
+    # Flash success message and redirect
+    flash('Post deleted successfully!', 'success')
+    return redirect(url_for('index'))
+
+
+@app.route('/update/<int:id>', methods=['GET', 'POST'])
+def update_post(id):
+    """
+    Displays a form to update an existing blog post or updates the post in the database if the form is submitted.
+    
+    Args:
+        id (int): The ID of the blog post to update.
+        
+    Returns:
+        Rendered HTML template for updating a post, or redirects to the homepage after updating the post.
+    """
+    post = BlogPost.querry.get_or_404(id) # Fetch the blog post by ID
+    if request.method == 'POST':
+        # Update the post in the database
+        post.author = request.form['author']
+        post.title = request.form['title']
+        post.content = request.form['content']
+        db.session.commit() # Save changes to the database
+
+        # Flash success message and redirect
+        flash('Post updated successfully!', 'success')
+        return redirect(url_for('index')) # Redirect to the homepage
+    
+    return render_template('update.html', post=post)
+
+
+@app.route('/like/<int:id>')
+def like_post(id):
+    """
+    Increments the like count of a blog post and saves the updated data to the database.
+    
+    Args:
+        id (int): the ID of the blog post to like.
+    
+    Returns:
+        Redirects to the homepage after liking the post.
+    """
+    post = BlogPost.querry.get_or_404(id) # Fetch the blog post by ID
+    post.likes += 1 # Incremnt the like count
+    db.session.commit() # Save the changes to the database
+
+    # Flash success message and redirect
+    flash('Post liked!', 'success')
+    return redirect(url_for('index')) # Redirect to the homepage
+
+
+if __name__ == "__main__":
+    """
+    Starts the Flask application on the specified host and port.
+    """
+    app.run(host='0.0.0.0', port=5003, debug=True)
