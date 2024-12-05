@@ -4,29 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update Blog Post</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Update Blog Post</h1>
+    <div class="container">
+        <h1 class="form-header">Update Blog Post</h1>
 
-    <!-- Display flash messages -->
-    {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-            <ul>
-                {% for category, message in messages %}
-                    <li class="{{ category }}">{{ message }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-    {% endwith %}
+        <!-- Display flash messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul>
+                    {% for category, message in messages %}
+                        <li class="{{ category }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
 
-    <form action="{{ url_for('update_post', id=post.id) }}" method="POST">
-        <label for="author">Author:</label><br>
-        <input type="text" id="author" name="author" value="{{ post.author }}"><br><br>
-        <label for="title">Title:</label><br>
-        <input type="text" id="title" name="title" value="{{ post.title }}"><br><br>
-        <label for="content">Content:</label><br>
-        <textarea id="content" name="content">{{ post.content }}</textarea><br><br>
-        <button type="submit">Update</button>
-    </form>
+        <form action="{{ url_for('update_post', id=post.id) }}" method="POST" class="form">
+            <!-- CSRF Token for protection -->
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+            <label for="author">Author:</label>
+            <input type="text" id="author" name="author" required class="input-text" value="{{ post.author }}"><br><br>
+
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required class="input-text" value="{{ post.title }}"><br><br>
+
+            <label for="content">Content:</label><br>
+            <textarea id="content" name="content" required class="textarea">{{ post.content }}</textarea><br><br>
+
+            <button type="submit" class="btn btn-submit">Update Post</button>
+            <a href="{{ url_for('index') }}" class="btn btn-cancel">Cancel</a>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Your Blog. All rights reserved.</p>
+    </footer>
 </body>
 </html>

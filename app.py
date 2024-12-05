@@ -2,12 +2,17 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect
+from dotenv import load_dotenv
+import os
+
+# Load environment variables from the .env file
+load_dotenv()
 
 # Initialize Flask application
 app = Flask(__name__)
 
-# Set secret key for CSRF protection and session management
-app.config['SECRET_KEY'] = 'your_secret_key'
+# Set secret key for CSRF protection and session management using the value from .env
+app.config['SECRET_KEY'] = os.getenv('FLASK_SECRET_KEY', 'fallback_secret_key')  # Use a fallback key if env var is missing
 
 # Set up the SQLite database
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'

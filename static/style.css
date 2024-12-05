@@ -22,23 +22,6 @@ h1 {
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
 }
 
-/* Post Section */
-.posts {
-    margin-top: 30px;
-}
-
-.post {
-    padding: 15px;
-    margin-bottom: 20px;
-    background-color: #FFF;
-    border-radius: 5px;
-    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-}
-
-.post-actions {
-    margin-top: 10px;
-}
-
 /* Form Styling */
 .form {
     display: flex;
@@ -90,7 +73,29 @@ h1 {
     background-color: #C0392B;
 }
 
-/* Like Button Styling */
+/* Submit Button Styling */
+.btn-submit {
+    background-color: #1abc9c;
+    color: white;
+}
+
+.btn-submit:hover {
+    background-color: #16a085;
+}
+
+/* Cancel Button */
+.btn-cancel {
+    background-color: #aaa;
+    color: #fff;
+    margin-left: 10px;
+    text-decoration: none;
+}
+
+.btn-cancel:hover {
+    background-color: #888;
+}
+
+/* Like Button */
 .btn-like {
     background-color: #2ecc71;
     color: white;
@@ -101,21 +106,10 @@ h1 {
     display: inline-block;
     transition: background-color 0.3s ease;
     cursor: pointer;
-    margin-right: 10px;
 }
 
 .btn-like:hover {
     background-color: #27ae60;
-}
-
-/* Submit Button Styling */
-.btn-submit {
-    background-color: #1abc9c; /* Same style as like button */
-    color: white;
-}
-
-.btn-submit:hover {
-    background-color: #16a085;
 }
 
 /* Flash Messages */
@@ -141,14 +135,6 @@ li.error {
     padding: 10px;
     margin: 5px 0;
     border-radius: 5px;
-}
-
-/* Form Header */
-.form-header {
-    color: #2c3e50;
-    text-align: center;
-    font-weight: bold;
-    margin-bottom: 25px;
 }
 
 /* Mobile Responsive Design */
