@@ -1,4 +1,3 @@
-Certainly! Here's an updated `README.md` that includes explanations about the SQLite database, CSRF protection, and Flask-Migration:
 
 ---
 
